@@ -1,40 +1,23 @@
-# UUID MCP Server
+# My MCP Server
 
-このプロジェクトは、UUIDを生成するためのMCPサーバーを提供します。サーバーは、UUID生成のエンドポイントを持ち、クライアントからのリクエストに応じてUUIDを生成します。
-
-## 構成ファイル
-
-- `src/server.ts`: アプリケーションのエントリポイントで、MCPサーバーを起動し、UUID生成のエンドポイントを設定します。
-- `src/utils/uuidGenerator.ts`: UUIDを生成するためのユーティリティ関数をエクスポートします。`generateUUID`関数が含まれています。
-- `tsconfig.json`: TypeScriptの設定ファイルで、コンパイラオプションやコンパイルに含めるファイルを指定します。
-- `package.json`: npmの設定ファイルで、プロジェクトの依存関係やスクリプトをリストします。
-
-## インストール
-
-プロジェクトをクローンした後、以下のコマンドを実行して依存関係をインストールしてください。
-
-```
-npm install
-```
-
-## 実行
-
-サーバーを起動するには、以下のコマンドを実行してください。
-
-```
-npm start
-```
+自分用の MCP サーバー
 
 ## 使用方法
 
-サーバーが起動したら、以下のエンドポイントにリクエストを送信することでUUIDを生成できます。
+VSCode で使う場合は、settings.json に以下のように記述する。  
+args に記載しているパスは適宜修正すること。  
+なお、node コマンドで TypeScript を実行するためには、V23.6.0 以降の Node.js が必要。
 
+```json
+{
+  "mcp": {
+    "inputs": [],
+    "servers": {
+      "my-mcp-server": {
+        "command": "node",
+        "args": ["/Users/ueki/pg/my/my-mcp-server/src/server.ts"]
+      }
+    }
+  }
+}
 ```
-GET /generate-uuid
-```
-
-このエンドポイントにアクセスすると、新しいUUIDが生成され、レスポンスとして返されます。
-
-## ライセンス
-
-このプロジェクトはMITライセンスの下で提供されています。
