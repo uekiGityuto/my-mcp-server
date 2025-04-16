@@ -29,3 +29,7 @@ args に記載しているパスは適宜修正すること。
   }
 }
 ```
+
+### 補足
+
+.git/hooks/pre-push に`npm run build`を記述しておくと、push 時に自動で build してくれるので便利だと思う。
