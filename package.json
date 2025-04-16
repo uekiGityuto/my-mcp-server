@@ -1,28 +1,42 @@
 {
-  "name": "uuid-mcp-server",
-  "version": "1.0.0",
-  "description": "A server for generating UUIDs using MCP.",
-  "main": "src/server.ts",
-  "scripts": {
-    "start": "node dist/server.js",
-    "dev": "ts-node src/server.ts",
-    "build": "tsc",
-    "test": "vitest run",
-    "test:watch": "vitest"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.9.0",
-    "uuid": "^11.1.0",
-    "zod": "^3.24.2"
-  },
-  "devDependencies": {
-    "@types/uuid": "^10.0.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "vitest": "^3.1.1"
-  },
-  "engines": {
-    "node": ">=20.12.2"
-  },
-  "license": "MIT"
+	"name": "uuid-mcp-server",
+	"version": "1.0.0",
+	"description": "A server for generating UUIDs using MCP.",
+	"main": "src/server.ts",
+	"scripts": {
+		"start": "node dist/server.js",
+		"dev": "ts-node src/server.ts",
+		"build": "tsc",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"lint": "biome check .",
+		"format": "biome format .",
+		"format:fix": "biome format . --write"
+	},
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "^1.9.0",
+		"uuid": "^11.1.0",
+		"zod": "^3.24.2"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@types/uuid": "^10.0.0",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.8.3",
+		"vitest": "^3.1.1"
+	},
+	"engines": {
+		"node": ">=20.12.2"
+	},
+	"license": "MIT",
+	"biome": {
+		"formatter": {
+			"enabled": true
+		},
+		"linter": {
+			"rules": {
+				"recommended": true
+			}
+		}
+	}
 }
