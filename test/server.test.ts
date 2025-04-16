@@ -1,15 +1,12 @@
-import { describe, it, expect, beforeAll, afterAll } from "vitest";
+import { describe, it, expect } from "vitest";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
-import { spawn, ChildProcess } from "child_process";
-
-let serverProcess: ChildProcess;
 
 describe("MCP Server", () => {
-  it("should generate a valid UUID using the uuid_generator tool", async () => {
+  it("should generate a valid UUID using the generate_uuid tool", async () => {
     // Create client transport and client instance
     const clientTransport = new StdioClientTransport({
-      command: "node",
+      command: "ts-node",
       args: ["./src/server.ts"], // 実際のサーバーファイルを指定
     });
 
@@ -22,7 +19,7 @@ describe("MCP Server", () => {
     await client.connect(clientTransport);
 
     try {
-      // Call the uuid_generator tool with appropriate arguments
+      // Call the generate_uuid tool with appropriate arguments
       const result = await client.callTool({
         name: "generate_uuid",
         arguments: {}, // Pass an empty object if no arguments are required

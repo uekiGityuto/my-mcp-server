@@ -4,9 +4,17 @@
 
 ## 使用方法
 
+### 事前準備
+
+```sh
+npm run build
+```
+
+### LLM 側の設定
+
 VSCode で使う場合は、settings.json に以下のように記述する。  
 args に記載しているパスは適宜修正すること。  
-なお、node コマンドで TypeScript を実行するためには、V23.6.0 以降の Node.js が必要。
+なお、ts-node コマンドが使えれば、build せずに server.ts を直接指定してできるはず。
 
 ```json
 {
@@ -15,7 +23,7 @@ args に記載しているパスは適宜修正すること。
     "servers": {
       "my-mcp-server": {
         "command": "node",
-        "args": ["/Users/ueki/pg/my/my-mcp-server/src/server.ts"]
+        "args": ["/Users/ueki/pg/my/my-mcp-server/dist/server.js"]
       }
     }
   }

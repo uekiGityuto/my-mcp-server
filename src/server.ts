@@ -1,6 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { v4 as uuidv4 } from "uuid";
+import { generateUUID } from "./utils/uuidGenerator";
 
 // Create an MCP server
 const server = new McpServer({
@@ -15,9 +15,11 @@ const server = new McpServer({
 });
 
 server.tool("generate_uuid", "UUIDを生成する", {}, async () => ({
-  content: [{ type: "text", text: uuidv4() }],
+  content: [{ type: "text", text: generateUUID() }],
 }));
 
 // Start receiving messages on stdin and sending messages on stdout
 const transport = new StdioServerTransport();
-await server.connect(transport);
+(async () => {
+  await server.connect(transport);
+})();
