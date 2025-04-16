@@ -19,10 +19,8 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"editor.formatOnSave": true,
-	"eslint.useFlatConfig": true,
-	"eslint.workingDirectories": [
-		{
-			"mode": "auto"
-		}
-	]
+	"editor.codeActionsOnSave": {
+		"quickfix.biome": "explicit",
+		"source.organizeImports.biome": "explicit"
+	}
 }

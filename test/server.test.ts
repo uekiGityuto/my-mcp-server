@@ -1,6 +1,6 @@
-import { describe, it, expect } from "vitest";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
+import { describe, expect, it } from "vitest";
 
 describe("MCP Server", () => {
 	it("should generate a valid UUID using the generate_uuid tool", async () => {
