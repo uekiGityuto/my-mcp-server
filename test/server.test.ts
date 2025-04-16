@@ -6,20 +6,6 @@ import { spawn, ChildProcess } from "child_process";
 let serverProcess: ChildProcess;
 
 describe("MCP Server", () => {
-  beforeAll(() => {
-    // Start the server as a child process
-    serverProcess = spawn("node", ["./src/server.ts"], {
-      stdio: "inherit", // Inherit stdio for debugging
-    });
-  });
-
-  afterAll(() => {
-    // Stop the server process
-    if (serverProcess) {
-      serverProcess.kill();
-    }
-  });
-
   it("should generate a valid UUID using the uuid_generator tool", async () => {
     // Create client transport and client instance
     const clientTransport = new StdioClientTransport({
@@ -38,12 +24,13 @@ describe("MCP Server", () => {
     try {
       // Call the uuid_generator tool with appropriate arguments
       const result = await client.callTool({
-        name: "uuid_generator",
+        name: "generate_uuid",
         arguments: {}, // Pass an empty object if no arguments are required
       });
 
       // Validate the result
       const content = result.content as Array<{ type: string; text: string }>;
+      console.log("Result content:", content);
       expect(content[0].text).toMatch(
         /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
       );

@@ -14,7 +14,7 @@ const server = new McpServer({
   },
 });
 
-server.tool("uuid_generator", "UUIDを生成する", {}, async () => ({
+server.tool("generate_uuid", "UUIDを生成する", {}, async () => ({
   content: [{ type: "text", text: uuidv4() }],
 }));
 
