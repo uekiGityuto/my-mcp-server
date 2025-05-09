@@ -78,4 +78,30 @@ describe("MCP Server", () => {
 			await clientTransport.close(); // Use `close` instead of `disconnect` if available
 		}
 	});
+
+	it("should sum numbers using the sum_numbers tool", async () => {
+		const clientTransport = new StdioClientTransport({
+			command: "ts-node",
+			args: ["./src/server.ts"],
+		});
+
+		const client = new Client({
+			name: "test-client",
+			version: "1.0.0",
+		});
+		await client.connect(clientTransport);
+
+		try {
+			const numbers = [1, 2, 3, 4, 5];
+			const result = await client.callTool({
+				name: "sum_numbers",
+				arguments: { numbers },
+			});
+
+			const content = result.content as Array<{ type: string; text: string }>;
+			expect(content[0].text).toBe("合計: 15");
+		} finally {
+			await clientTransport.close();
+		}
+	});
 });
